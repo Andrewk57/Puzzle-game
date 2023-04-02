@@ -6,7 +6,7 @@ public class playerMovement : MonoBehaviour
 {
 
     //public Camera mainC;
-    private float cameraSpeed = .1f;
+    private float cameraSpeed = .06f;
 
     // Start is called before the first frame update
     void Start()

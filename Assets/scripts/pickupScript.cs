@@ -20,17 +20,40 @@ public class pickupScript : MonoBehaviour
    
     private void OnMouseDrag()
     {
-        float distance = Vector3.Distance(middle.transform.position, dropPoint.transform.position);
-        //Debug.Log(distance);
-        saveSpot.transform.position = box.transform.position;
-
-        if (dropPoint.transform.position.y <= -.1f || dropPoint.transform.position.y >= 3.5f || distance >= 4.6f)
+        if (buttonHandleR.onButton == false)
         {
-         box.transform.position = saveSpot.transform.position;
-            Debug.Log("Resetposition"); // did this so box cant be dropped through ground
+            float distance = Vector3.Distance(middle.transform.position, dropPoint.transform.position);
+            //Debug.Log(distance);
+            saveSpot.transform.position = box.transform.position;
+
+            if (dropPoint.transform.position.y <= -.1f || dropPoint.transform.position.y >= 3.5f || distance >= 4.6f)
+            {
+                box.transform.position = saveSpot.transform.position;
+                Debug.Log("Resetposition"); // did this so box cant be dropped through ground
+            }
+            else
+            {
+                box.transform.position = dropPoint.transform.position;
+            }
+            box.GetComponent<Rigidbody>().freezeRotation = true;
         }
-        else 
-        box.transform.position = dropPoint.transform.position;
+        if (metalButton.onButtonMetal == false)
+        {
+            float distance = Vector3.Distance(middle.transform.position, dropPoint.transform.position);
+            //Debug.Log(distance);
+            saveSpot.transform.position = box.transform.position;
+
+            if (dropPoint.transform.position.y <= -.1f || dropPoint.transform.position.y >= 3.5f || distance >= 4.6f)
+            {
+                box.transform.position = saveSpot.transform.position;
+                Debug.Log("Resetposition"); // did this so box cant be dropped through ground
+            }
+            else
+            {
+                box.transform.position = dropPoint.transform.position;
+            }
+            box.GetComponent<Rigidbody>().freezeRotation = true;
+        }
     }
     
     // Update is called once per frame
