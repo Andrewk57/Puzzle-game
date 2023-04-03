@@ -25,9 +25,9 @@ public class metalButton : MonoBehaviour
         {
             //Debug.Log("Changed color with collison");
             colorRender.material.color = Color.green;
-            gunHandler.amtDone++;
+            gunHandler.amtDoneTut++;
             onButtonMetal = true;
-            if (gunHandler.amtDone >= amtToGet)
+            if (gunHandler.amtDoneTut >= amtToGet)
             {
                 plane.transform.Translate(-15, 0, 0);
                 didDone = true;
@@ -41,7 +41,8 @@ public class metalButton : MonoBehaviour
         if (collision.gameObject.CompareTag("Heavy Box"))
         {
             colorRender.material.color = Color.red;
-            gunHandler.amtDone--;
+            gunHandler.amtDoneTut--;
+            onButtonMetal = false;
             /*if (gunHandler.amtDone < amtToGet && didDone == true)
             {
                 Debug.Log("Set ispos2 to false");

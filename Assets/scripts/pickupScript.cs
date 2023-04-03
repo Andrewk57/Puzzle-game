@@ -8,6 +8,9 @@ public class pickupScript : MonoBehaviour
     private GameObject box;
     public GameObject saveSpot;
     public GameObject middle;
+    public GameObject particle;
+    public GameObject spawnHere;
+    
     //private Rigidbody rb;
     void Start()
     {
@@ -20,6 +23,7 @@ public class pickupScript : MonoBehaviour
    
     private void OnMouseDrag()
     {
+        Instantiate(particle); // spawn particle, at a position, as the child. **
         if (buttonHandleR.onButton == false)
         {
             float distance = Vector3.Distance(middle.transform.position, dropPoint.transform.position);

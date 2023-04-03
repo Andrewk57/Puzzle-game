@@ -25,10 +25,10 @@ public class buttonHandleR : MonoBehaviour
         {
             //Debug.Log("Changed color with collison");
             colorRender.material.color = Color.green;
-            gunHandler.amtDone++;
+            gunHandler.amtDoneTut++;
             //collision.rigidbody.isKinematic = true;
             onButton = true;
-            if (gunHandler.amtDone >= amtToGet)
+            if (gunHandler.amtDoneTut >= amtToGet)
             {
                 plane.transform.Translate(-15, 0, 0);
                 didDone = true;
@@ -41,10 +41,12 @@ public class buttonHandleR : MonoBehaviour
         if (collision.gameObject.CompareTag("Wood box"))
         {
             colorRender.material.color = Color.red;
-            gunHandler.amtDone--;
-            if (gunHandler.amtDone < amtToGet&& didDone==true)
+            onButton = false;
+            gunHandler.amtDoneTut--;
+            if (gunHandler.amtDoneTut < amtToGet&& didDone==true)
             {
                 Debug.Log("Set ispos to false");
+                
                 plane.transform.Translate(15, 0, 0);
             }
             
