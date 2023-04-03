@@ -9,7 +9,9 @@ public class pickupScript : MonoBehaviour
     public GameObject saveSpot;
     public GameObject middle;
     public GameObject particle;
-    public GameObject spawnHere;
+    public Transform spawnHere;
+    public bool isParticle = false;
+    public Vector3 spawnHerePos;
     
     //private Rigidbody rb;
     void Start()
@@ -17,13 +19,21 @@ public class pickupScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         box = this.gameObject;
-      
+        spawnHerePos= spawnHere.transform.position;
         //rb = this.gameObject.GetComponent<Rigidbody>();
     }
    
     private void OnMouseDrag()
     {
-        Instantiate(particle); // spawn particle, at a position, as the child. **
+        if (isParticle == false)
+        {
+            spawnHerePos = spawnHere.transform.position;
+            GameObject newObject = Instantiate(particle, spawnHerePos, Quaternion.identity);
+            newObject.transform.SetParent(spawnHere);
+             // spawn particle, at a position, as the child. **
+            isParticle = true;
+        }
+        
         if (buttonHandleR.onButton == false)
         {
             float distance = Vector3.Distance(middle.transform.position, dropPoint.transform.position);
@@ -59,11 +69,26 @@ public class pickupScript : MonoBehaviour
             box.GetComponent<Rigidbody>().freezeRotation = true;
         }
     }
-    
+    private void OnMouseUp()
+    {
+        
+        if (particle == null)
+        {
+            return;
+        }
+        else
+        DestroyImmediate(spawnHere.GetChild(0).gameObject);
+        isParticle = false;
+    }
     // Update is called once per frame
     void Update()
     {
-       
+        /*if (particle == null)
+        {
+            return;
+        }
+        else
+        particle.transform.position = spawnHere.transform.position; */
     }
     
 }
