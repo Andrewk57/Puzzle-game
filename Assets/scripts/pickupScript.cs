@@ -12,6 +12,8 @@ public class pickupScript : MonoBehaviour
     public Transform spawnHere;
     public bool isParticle = false;
     public Vector3 spawnHerePos;
+    public float distanceHolderReg;
+    public float distanceHolderMetal;
     
     //private Rigidbody rb;
     void Start()
@@ -37,7 +39,7 @@ public class pickupScript : MonoBehaviour
         if (buttonHandleR.onButton == false)
         {
             float distance = Vector3.Distance(middle.transform.position, dropPoint.transform.position);
-            //Debug.Log(distance);
+            //distanceHolderReg = distance; // debug
             saveSpot.transform.position = box.transform.position;
 
             if (dropPoint.transform.position.y <= -.1f || dropPoint.transform.position.y >= 3.5f || distance >= 4.6f)
@@ -54,7 +56,8 @@ public class pickupScript : MonoBehaviour
         if (metalButton.onButtonMetal == false)
         {
             float distance = Vector3.Distance(middle.transform.position, dropPoint.transform.position);
-            //Debug.Log(distance);
+            //distanceHolderMetal = distance; //debug
+           // Debug.Log(distance);
             saveSpot.transform.position = box.transform.position;
 
             if (dropPoint.transform.position.y <= -.1f || dropPoint.transform.position.y >= 3.5f || distance >= 4.6f)
@@ -83,12 +86,8 @@ public class pickupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (particle == null)
-        {
-            return;
-        }
-        else
-        particle.transform.position = spawnHere.transform.position; */
+        //Debug.Log(distanceHolderReg);
+
     }
     
 }

@@ -16,6 +16,9 @@ public class nextLevel : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            gunHandler.amtDoneTut = 0;
+            buttonHandleR.onButton = false;
+            metalButton.onButtonMetal = false;
             SceneManager.LoadScene(LevelNext);
         }
     }
