@@ -14,6 +14,7 @@ public class pickupScript : MonoBehaviour
     public Vector3 spawnHerePos;
     public float distanceHolderReg;
     public float distanceHolderMetal;
+    public AudioSource hover;
     
     //private Rigidbody rb;
     void Start()
@@ -32,6 +33,8 @@ public class pickupScript : MonoBehaviour
             spawnHerePos = spawnHere.transform.position;
             GameObject newObject = Instantiate(particle, spawnHerePos, Quaternion.identity);
             newObject.transform.SetParent(spawnHere);
+            //play audio clip here
+            hover.Play();
              // spawn particle, at a position, as the child. **
             isParticle = true;
         }
@@ -81,6 +84,7 @@ public class pickupScript : MonoBehaviour
         }
         else
         DestroyImmediate(spawnHere.GetChild(0).gameObject);
+        hover.Stop();
         isParticle = false;
     }
     // Update is called once per frame

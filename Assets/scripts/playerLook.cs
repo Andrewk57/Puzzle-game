@@ -18,7 +18,7 @@ public class playerLook : MonoBehaviour
 
     void Update()
     {
-        if (lavaDestroy.isLose==false)
+        if (lavaDestroy.isLose==false && buttonScript.isPaused==false)
         {
             var md = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 

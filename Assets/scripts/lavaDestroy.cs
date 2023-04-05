@@ -17,18 +17,19 @@ public class lavaDestroy : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             //Destroy(collision.gameObject);
+
             isLose = true;
 
 
         }
         if (collision.transform.CompareTag("Wood box"))
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             isLose = true;
         }
         if (collision.transform.CompareTag("Heavy Box"))
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             isLose = true;
         }
     }
@@ -37,8 +38,17 @@ public class lavaDestroy : MonoBehaviour
     {
         if(isLose == true)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            buttonHandleR.onButton = false;
+            metalButton.onButtonMetal = false;  
             deathScreen.SetActive(true);
+            AudioListener.volume = 0f;
             Time.timeScale = 0f;
+        }
+        else
+        {
+            AudioListener.volume = 1f;
         }
     }
 }

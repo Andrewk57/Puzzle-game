@@ -10,6 +10,7 @@ public class buttonHandleR : MonoBehaviour
     private float amtToGet = 2;
     public bool didDone=false;
     public static bool onButton = false;
+    public AudioSource ding;
     void Start()
     {
      colorRender = GetComponent<Renderer>();
@@ -25,6 +26,7 @@ public class buttonHandleR : MonoBehaviour
         {
             //Debug.Log("Changed color with collison");
             colorRender.material.color = Color.green;
+            ding.Play();
             gunHandler.amtDoneTut++;
             //collision.rigidbody.isKinematic = true;
             onButton = true;

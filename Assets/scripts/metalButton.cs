@@ -10,6 +10,7 @@ public class metalButton : MonoBehaviour
     private float amtToGet = 2;
     public bool didDone = false;
     public static bool onButtonMetal = false;
+    public AudioSource dingM;
     void Start()
     {
         colorRender = GetComponent<Renderer>();
@@ -25,6 +26,7 @@ public class metalButton : MonoBehaviour
         {
             //Debug.Log("Changed color with collison");
             colorRender.material.color = Color.green;
+            dingM.Play();
             gunHandler.amtDoneTut++;
             onButtonMetal = true;
             if (gunHandler.amtDoneTut >= amtToGet)

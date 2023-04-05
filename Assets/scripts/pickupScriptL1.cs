@@ -14,7 +14,8 @@ public class pickupScriptL1 : MonoBehaviour
     public Vector3 spawnHerePos;
     public static Vector3 dropp;
     public static Vector3 mid;
-    public static bool isCarrying = false;  
+    public static bool isCarrying = false;
+    public AudioSource hover;
     //private Rigidbody rb;
     void Start()
     {
@@ -34,6 +35,7 @@ public class pickupScriptL1 : MonoBehaviour
             spawnHerePos = spawnHere.transform.position;
             GameObject newObject = Instantiate(particle, spawnHerePos, Quaternion.identity);
             newObject.transform.SetParent(spawnHere);
+            hover.Play();
             // spawn particle, at a position, as the child. **
             isParticle = true;
         }
@@ -98,6 +100,7 @@ public class pickupScriptL1 : MonoBehaviour
         }
         else
             DestroyImmediate(spawnHere.GetChild(0).gameObject);
+        hover.Stop();
         isParticle = false;
     }
 }
